@@ -4,8 +4,29 @@
              x:Class="Cally.Views.MainPage"
              Title="{Binding Title}">
 
-    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Label Text="Welcome to Xamarin Forms and Prism!" />
-    </StackLayout>
+    <!--<ScrollView Orientation="Horizontal">-->
+    <Grid Grid.ColumnSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="600"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <ScrollView x:Name="scrCal" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Orientation="Both">
+            <!--<BoxView BackgroundColor="#e74c3c" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"></BoxView>-->
+            <!--<Image Source="https://images.unsplash.com/flagged/photo-1554935897-1bb0d260620a" Aspect="AspectFill"></Image>-->
+            <FlexLayout x:Name="flxCal" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Direction="Row" Wrap="Wrap"></FlexLayout>
+        </ScrollView>
+
+        <!--<BoxView Grid.Column="0" BackgroundColor="#2ecc71" VerticalOptions="FillAndExpand"></BoxView>-->
+        <ScrollView x:Name="scrNames" Grid.Column="0" VerticalOptions="FillAndExpand" Orientation="Vertical">
+            <!--<Image Source="https://images.unsplash.com/photo-1554876268-e679ace18093" Aspect="Fill"></Image>-->
+            <StackLayout x:Name="stkEmpNames" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"></StackLayout>
+        </ScrollView>
+
+    </Grid>
+    <!--</ScrollView>-->
 
 </ContentPage>
