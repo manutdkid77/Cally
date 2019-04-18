@@ -17,7 +17,7 @@ namespace Cally.Views
             InitializeComponent();
             scrCal.Scrolled += ScrCal_Scrolled;
             BindCal();
-            BindNames();
+            //BindNames();
         }
 
         private void BindCal()

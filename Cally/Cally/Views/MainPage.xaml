@@ -11,12 +11,30 @@
         </Grid.ColumnDefinitions>
 
         <ScrollView x:Name="scrCal" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never" Orientation="Both" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-            <StackLayout x:Name="stkCal" Orientation="Vertical" HorizontalOptions="FillAndExpand">
+            <StackLayout x:Name="stkCal" Orientation="Vertical" HorizontalOptions="FillAndExpand" BindableLayout.ItemsSource="{Binding obsEmployee}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding Schedule.Monday}" TextColor="Black" BackgroundColor="Yellow"></Label>
+                            <Label Text="{Binding Schedule.Tuesday}" TextColor="Black" BackgroundColor="Yellow"></Label>
+                            <Label Text="{Binding Schedule.Wednesday}" TextColor="Black" BackgroundColor="Yellow"></Label>
+                            <Label Text="{Binding Schedule.Thursday}" TextColor="Black" BackgroundColor="Yellow"></Label>
+                            <Label Text="{Binding Schedule.Friday}" TextColor="Black" BackgroundColor="Yellow"></Label>
+                            <Label Text="{Binding Schedule.Saturday}" TextColor="Black" BackgroundColor="Yellow"></Label>
+                            <Label Text="{Binding Schedule.Sunday}" TextColor="Black" BackgroundColor="Yellow"></Label>
+                        </StackLayout>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
             </StackLayout>
         </ScrollView>
 
         <ScrollView x:Name="scrNames" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never" Orientation="Vertical" Grid.Column="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" IsEnabled="False">
-            <StackLayout x:Name="stkNames" Grid.Column="0">
+            <StackLayout x:Name="stkNames" BindableLayout.ItemsSource="{Binding obsEmployee}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Label Text="{Binding Name}" TextColor="Black" BackgroundColor="Yellow"></Label>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
             </StackLayout>
         </ScrollView>
 
