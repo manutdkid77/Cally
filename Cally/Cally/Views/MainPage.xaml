@@ -2,7 +2,24 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Cally.Views.MainPage"
-             Title="{Binding Title}">
+             Title="{Binding Title}" BackgroundColor="#dff9fb">
+    <ContentPage.Resources>
+        <Style x:Key="BaseLabelStyle" TargetType="Label">
+            <Setter Property="TextColor" Value="Black"></Setter>
+            <Setter Property="FontSize" Value="14"></Setter>
+            <Setter Property="WidthRequest" Value="100"></Setter>
+            <Setter Property="HeightRequest" Value="30"></Setter>
+            <Setter Property="HorizontalTextAlignment" Value="Center"></Setter>
+            <Setter Property="VerticalTextAlignment" Value="Center"></Setter>
+            <Setter Property="LineBreakMode" Value="TailTruncation"></Setter>
+        </Style>
+        <Style x:Key="LabelCalendarDayStyle" TargetType="Label" BasedOn="{StaticResource BaseLabelStyle}">
+            <Setter Property="BackgroundColor" Value="#81ecec"></Setter>
+        </Style>
+        <Style x:Key="LabelEmployeeNameStyle" TargetType="Label" BasedOn="{StaticResource BaseLabelStyle}">
+            <Setter Property="BackgroundColor" Value="#ff7675"></Setter>
+        </Style>
+    </ContentPage.Resources>
 
     <Grid Grid.ColumnSpacing="0">
         <Grid.ColumnDefinitions>
@@ -10,29 +27,29 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <ScrollView x:Name="scrCal" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never" Orientation="Both" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-            <StackLayout x:Name="stkCal" Orientation="Vertical" HorizontalOptions="FillAndExpand" BindableLayout.ItemsSource="{Binding obsEmployee}">
+        <ScrollView Orientation="Both" Grid.Column="1" Scrolled="ScrCal_Scrolled">
+            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" BindableLayout.ItemsSource="{Binding obsEmployee}" CompressedLayout.IsHeadless="True">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="{Binding Schedule.Monday}" TextColor="Black" BackgroundColor="Yellow"></Label>
-                            <Label Text="{Binding Schedule.Tuesday}" TextColor="Black" BackgroundColor="Yellow"></Label>
-                            <Label Text="{Binding Schedule.Wednesday}" TextColor="Black" BackgroundColor="Yellow"></Label>
-                            <Label Text="{Binding Schedule.Thursday}" TextColor="Black" BackgroundColor="Yellow"></Label>
-                            <Label Text="{Binding Schedule.Friday}" TextColor="Black" BackgroundColor="Yellow"></Label>
-                            <Label Text="{Binding Schedule.Saturday}" TextColor="Black" BackgroundColor="Yellow"></Label>
-                            <Label Text="{Binding Schedule.Sunday}" TextColor="Black" BackgroundColor="Yellow"></Label>
+                        <StackLayout Orientation="Horizontal" CompressedLayout.IsHeadless="True">
+                            <Label Text="{Binding Schedule.Monday}" Style="{StaticResource LabelCalendarDayStyle}"></Label>
+                            <Label Text="{Binding Schedule.Tuesday}" Style="{StaticResource LabelCalendarDayStyle}"></Label>
+                            <Label Text="{Binding Schedule.Wednesday}" Style="{StaticResource LabelCalendarDayStyle}"></Label>
+                            <Label Text="{Binding Schedule.Thursday}" Style="{StaticResource LabelCalendarDayStyle}"></Label>
+                            <Label Text="{Binding Schedule.Friday}" Style="{StaticResource LabelCalendarDayStyle}"></Label>
+                            <Label Text="{Binding Schedule.Saturday}" Style="{StaticResource LabelCalendarDayStyle}"></Label>
+                            <Label Text="{Binding Schedule.Sunday}" Style="{StaticResource LabelCalendarDayStyle}"></Label>
                         </StackLayout>
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
             </StackLayout>
         </ScrollView>
 
-        <ScrollView x:Name="scrNames" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never" Orientation="Vertical" Grid.Column="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" IsEnabled="False">
-            <StackLayout x:Name="stkNames" BindableLayout.ItemsSource="{Binding obsEmployee}">
+        <ScrollView x:Name="scrNames" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never" Orientation="Vertical" Grid.Column="0" IsEnabled="False">
+            <StackLayout BindableLayout.ItemsSource="{Binding obsEmployee}" CompressedLayout.IsHeadless="True">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
-                        <Label Text="{Binding Name}" TextColor="Black" BackgroundColor="Yellow"></Label>
+                        <Label Text="{Binding Name}" Style="{StaticResource LabelEmployeeNameStyle}"></Label>
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
             </StackLayout>
