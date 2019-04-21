@@ -19,39 +19,61 @@
         <Style x:Key="LabelEmployeeNameStyle" TargetType="Label" BasedOn="{StaticResource BaseLabelStyle}">
             <Setter Property="BackgroundColor" Value="#ff7675"></Setter>
         </Style>
+        <Style x:Key="LabelCalendarDayTitleStyle" TargetType="Label" BasedOn="{StaticResource BaseLabelStyle}">
+            <Setter Property="BackgroundColor" Value="#00cec9"></Setter>
+        </Style>
+        <Style x:Key="LabelEmployeeNameTitleStyle" TargetType="Label" BasedOn="{StaticResource BaseLabelStyle}">
+            <Setter Property="BackgroundColor" Value="#CC5E5D"></Setter>
+        </Style>
     </ContentPage.Resources>
 
-    <Grid Grid.ColumnSpacing="0">
+    <Grid Grid.ColumnSpacing="0" CompressedLayout.IsHeadless="True">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <ScrollView Orientation="Both" Grid.Column="1" Scrolled="ScrCal_Scrolled">
-            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" BindableLayout.ItemsSource="{Binding obsEmployee}" CompressedLayout.IsHeadless="True">
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout Orientation="Horizontal" CompressedLayout.IsHeadless="True">
-                            <Label Text="{Binding Schedule.Monday}" Style="{StaticResource LabelCalendarDayStyle}"></Label>
-                            <Label Text="{Binding Schedule.Tuesday}" Style="{StaticResource LabelCalendarDayStyle}"></Label>
-                            <Label Text="{Binding Schedule.Wednesday}" Style="{StaticResource LabelCalendarDayStyle}"></Label>
-                            <Label Text="{Binding Schedule.Thursday}" Style="{StaticResource LabelCalendarDayStyle}"></Label>
-                            <Label Text="{Binding Schedule.Friday}" Style="{StaticResource LabelCalendarDayStyle}"></Label>
-                            <Label Text="{Binding Schedule.Saturday}" Style="{StaticResource LabelCalendarDayStyle}"></Label>
-                            <Label Text="{Binding Schedule.Sunday}" Style="{StaticResource LabelCalendarDayStyle}"></Label>
-                        </StackLayout>
-                    </DataTemplate>
-                </BindableLayout.ItemTemplate>
+            <StackLayout CompressedLayout.IsHeadless="True">
+                <StackLayout Orientation="Horizontal" CompressedLayout.IsHeadless="True">
+                    <Label Text="Monday" Style="{StaticResource LabelCalendarDayTitleStyle}"></Label>
+                    <Label Text="Tuesday" Style="{StaticResource LabelCalendarDayTitleStyle}"></Label>
+                    <Label Text="Wednesday" Style="{StaticResource LabelCalendarDayTitleStyle}"></Label>
+                    <Label Text="Thursday" Style="{StaticResource LabelCalendarDayTitleStyle}"></Label>
+                    <Label Text="Friday" Style="{StaticResource LabelCalendarDayTitleStyle}"></Label>
+                    <Label Text="Saturday" Style="{StaticResource LabelCalendarDayTitleStyle}"></Label>
+                    <Label Text="Sunday" Style="{StaticResource LabelCalendarDayTitleStyle}"></Label>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" BindableLayout.ItemsSource="{Binding obsEmployee}" CompressedLayout.IsHeadless="True">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Orientation="Horizontal" CompressedLayout.IsHeadless="True">
+                                <Label Text="{Binding Schedule.Monday}" Style="{StaticResource LabelCalendarDayStyle}"></Label>
+                                <Label Text="{Binding Schedule.Tuesday}" Style="{StaticResource LabelCalendarDayStyle}"></Label>
+                                <Label Text="{Binding Schedule.Wednesday}" Style="{StaticResource LabelCalendarDayStyle}"></Label>
+                                <Label Text="{Binding Schedule.Thursday}" Style="{StaticResource LabelCalendarDayStyle}"></Label>
+                                <Label Text="{Binding Schedule.Friday}" Style="{StaticResource LabelCalendarDayStyle}"></Label>
+                                <Label Text="{Binding Schedule.Saturday}" Style="{StaticResource LabelCalendarDayStyle}"></Label>
+                                <Label Text="{Binding Schedule.Sunday}" Style="{StaticResource LabelCalendarDayStyle}"></Label>
+                            </StackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
             </StackLayout>
         </ScrollView>
 
         <ScrollView x:Name="scrNames" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never" Orientation="Vertical" Grid.Column="0" IsEnabled="False">
-            <StackLayout BindableLayout.ItemsSource="{Binding obsEmployee}" CompressedLayout.IsHeadless="True">
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate>
-                        <Label Text="{Binding Name}" Style="{StaticResource LabelEmployeeNameStyle}"></Label>
-                    </DataTemplate>
-                </BindableLayout.ItemTemplate>
+            <StackLayout CompressedLayout.IsHeadless="True">
+                <Frame Padding="0" HasShadow="False" CornerRadius="0" CompressedLayout.IsHeadless="True">
+                    <Label Text="Name" Style="{StaticResource LabelEmployeeNameTitleStyle}"></Label>
+                </Frame>
+                <StackLayout BindableLayout.ItemsSource="{Binding obsEmployee}" CompressedLayout.IsHeadless="True">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Label Text="{Binding Name}" Style="{StaticResource LabelEmployeeNameStyle}"></Label>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
             </StackLayout>
         </ScrollView>
 
