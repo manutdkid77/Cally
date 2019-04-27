@@ -20,3 +20,7 @@ A mockup was given that required very complex features :flushed:
 This solution requires Visual Studio for Mac 2017 or 2019.
 ### Visual Studio for PC
 This solution requires Visual Studio for PC 2017 or 2019.
+
+## End Result :rainbow:
+![screenshot](https://raw.githubusercontent.com/manutdkid77/Cally/master/Artwork/screenshot.png?token=ADNCU2JZB5XT2HCEUD64XS24YSALM)
+[VideoLink](https://streamable.com/tvh0d)
